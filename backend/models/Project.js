@@ -1,0 +1,10 @@
+import mongoose from 'mongoose';
+
+const projectSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String },
+  value: { type: Number, required: true },
+  completion: { type: Number, default: 0 },
+}, { timestamps: true });
+
+export default mongoose.model('Project', projectSchema);
