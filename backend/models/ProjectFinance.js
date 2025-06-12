@@ -11,7 +11,7 @@ const transactionSchema = new mongoose.Schema({
   description: String,
   type: {
     type: String,
-    enum: ['income', 'expense']
+    enum: ['expense']
   }
 } , { timestamps: true });
 

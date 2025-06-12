@@ -10,15 +10,19 @@ export const addTransaction = async (req, res) => {
   }
 };
 
-// Get all transactions
+
+// Get all transactions (latest first)
 export const getAllTransactions = async (req, res) => {
   try {
-    const transactions = await Finance.find().populate('project');
+    const transactions = await Finance.find()
+      .populate('project')
+      .sort({ createdAt: -1 }); // Sort by newest first
     res.status(200).json(transactions);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // Get a single transaction by ID
 export const getTransactionById = async (req, res) => {
